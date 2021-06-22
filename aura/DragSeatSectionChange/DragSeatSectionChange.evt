@@ -1,0 +1,7 @@
+<aura:event type="COMPONENT" description="Event fired whenever an item is dropped on a DragSeatSection">
+	<aura:attribute type="String" name="title"></aura:attribute>
+    <aura:attribute type="String" name="seatid"></aura:attribute>
+    <!-- <aura:attribute type="Integer" name="capacity"></aura:attribute> -->
+    <aura:attribute type="Object" name="item"></aura:attribute>
+    
+</aura:event>

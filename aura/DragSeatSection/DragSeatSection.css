@@ -1,0 +1,10 @@
+.THIS .seat-space {
+    display: block;
+    min-height: 40px;
+    min-width: 140px;
+    background-color: pink;
+}
+.THIS .seat-space p {
+ 	text-align: center;
+    font-weight: bold;
+}

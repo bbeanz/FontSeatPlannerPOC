@@ -1,0 +1,33 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<!-- Attributes -->
+    <aura:attribute name="title" type="String" default=""></aura:attribute>
+    <!--<aura:attribute name="capacity" type="Integer" required="true"></aura:attribute>-->
+    <aura:attribute name="items" type="Object[]" required="true"></aura:attribute>
+    <aura:attribute name="seat" type="Object"></aura:attribute>
+    <aura:attribute name="count" type="String"></aura:attribute>
+    
+    <!-- Custom Events -->
+    <aura:registerEvent name="DragSeatSectionChange" type="c:DragSeatSectionChange"/>
+    
+    <!-- Component Body -->
+    <tr> 
+        <td>
+            <aura:if isTrue="{!v.count != 'un'}">
+                {!v.count+1}
+            </aura:if>
+        </td>
+        <td>
+            <div class="seat-space" id="{!'seat'+v.count}" ondrop="{!c.onDrop}" ondragover="{!c.allowDrop}">
+                <aura:if isTrue="{!v.count == 'un'}">
+                	<p class="center">Drag Items away to Allocate - Drop Items here to Unallocate</p>
+                </aura:if>
+                <aura:iteration items="{!v.items}" var="item">
+                    <aura:if isTrue="{!item.EventApi__Seat__c == v.seat.Id}">
+                        <c:DragSeat item="{!item}"></c:DragSeat>                   
+                    </aura:if>
+                </aura:iteration>                
+            </div>
+        </td>
+    </tr>
+    
+</aura:component>
