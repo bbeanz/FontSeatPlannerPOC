@@ -1,0 +1,76 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="getSeatingSectionAttendees">
+	<!-- attributes -->
+    <aura:attribute name="allItems" type="list"></aura:attribute>
+    <aura:attribute name="allSections" type="list"></aura:attribute>
+    <aura:attribute name="allSeats" type="list"></aura:attribute>
+    <aura:attribute name="counter" type="Integer"></aura:attribute>
+    
+    <!-- event handlers -->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"></aura:handler>
+    <aura:handler name="DragSeatSectionChange" event="c:DragSeatSectionChange" action="{!c.onDragSeatSectionChanged}"></aura:handler>
+    
+    <lightning:card title="Table Plan">
+        <div class="slds-grid slds-gutters slds-wrap" >
+            
+             <aura:iteration items="{!v.allSections}" var="section">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_2-of-12">
+                    <div class="slds-panel">
+                        <div class="slds-panel__header">
+                            <a target="_blank" href="{!'/'+section.Id}">{!section.Name}</a>
+                        </div>
+                        <div class="slds-panel__body slds-col"> 
+                            <aura:iteration items="{!v.allSeats}" var="seat" indexVar="count">
+                                <aura:if isTrue="{!seat.EventApi__Section__c == section.Id}">                                                   
+                                    <c:DragSeatSection count="{!count}" title="{!seat.Name}" items="{!v.allItems}" seat="{!seat}"></c:DragSeatSection>                       
+                                </aura:if>
+                            </aura:iteration>
+                        </div>                        
+                    </div>
+                </div>
+            </aura:iteration> 
+            
+            <!--<lightning:layout>
+                <aura:iteration items="{!v.allSections}" var="section">
+                    <lightning:layoutItem>
+                        <div class="slds-text-title slds-text-color_default"><p><a target="_blank" href="{!'/'+section.Id}">{!section.Section_Name__c}</a></p></div>
+                        <table class="slds-table slds-no-row-hover">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th>
+                                        <div class="slds-truncate" title="Seat">Seat</div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-truncate" title="Attendee">Attendee</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                <aura:iteration items="{!v.allSeats}" var="seat" indexVar="count">
+                                    <aura:if isTrue="{!seat.Section__c == section.Id}">                                                   
+                                        <c:DragSeatSection count="{!count}" title="{!seat.Name}" items="{!v.allItems}" seat="{!seat}"></c:DragSeatSection>                       
+                                    </aura:if>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </lightning:layoutItem>
+                </aura:iteration>
+            </lightning:layout>--> 
+            
+            <div class="slds-panel" id="unallocated-panel">
+                <div class="slds-panel__header">
+                    Unallocated
+                </div>
+                <div class="slds-panel__body slds-col">
+                    <c:DragSeatSection count="un" title="" items="{!v.allItems}" seat="[]"></c:DragSeatSection>
+                </div>
+            </div>               
+        </div>
+        
+        <aura:set attribute="actions">
+            <lightning:button label="Save Seating Plan (Attendees)" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.editAttendees}"/>
+        </aura:set>
+    </lightning:card>
+</aura:component>

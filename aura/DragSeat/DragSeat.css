@@ -1,0 +1,11 @@
+.THIS.draggable {
+    border: 1px solid black!important;
+    min-height: 3em;
+}
+.THIS.draggable .card-body {
+    padding: 0 5px;
+}
+
+.THIS.draggable .attendee-name {
+    font-weight: bold;
+}

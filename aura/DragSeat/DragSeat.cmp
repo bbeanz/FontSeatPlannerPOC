@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="item" type="Object" required="true"></aura:attribute>
+	<!-- <ltng:require styles="{!$Resource.bulma + '/bulma-0.7.2/css/bulma.css'}" /> -->
+    <div class="slds-card draggable" draggable="true" ondragstart="{!c.onDragStart}">
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="card-body">
+                <ui:outputText value='{!v.item.EventApi__Full_Name__c}' class="attendee-name"/>
+                <!-- <aura:if isTrue="{!not(empty(v.item.Allergies__c))}">                    
+                    &nbsp;<lightning:helptext content='{!v.item.Allergies__c}' />                   
+                </aura:if>-->
+                <br/>
+                <ui:outputText value='{!v.item.Account_Name__c}'/>
+            </div>
+        </div>
+    </div>
+</aura:component>

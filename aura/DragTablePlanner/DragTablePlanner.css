@@ -1,0 +1,11 @@
+.THIS #unallocated-panel {
+ 	width: 100%;
+}
+.THIS #seatun {
+ 	padding-top: 2em;
+    clear: both;
+}
+.THIS #seatun .slds-card {
+    display: inline-block;
+    margin: .5em;
+}
