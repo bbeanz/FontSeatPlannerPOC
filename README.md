@@ -9,9 +9,12 @@ Outline:
 2) A set of Lightning Components (with associated Apex Classes) providing a drag and drop interface intended for Backend staff to allocate Attendees to a specific Seat
 
 Installation:
-1) Install th contents of this repo
+1) Install the contents of this repo
 2) Use Lightning Page Builder to add the component to a new Tab on the Event page layout
 3) For a given Event add Sections and Seats and register some Attendees
 4) Visit the newly created tab on the Event page
 5) You should now be able to drag registered Attendees, one at a time, from the Unallocated section to a specific seat (or move them from seat to seat)
 6) Once attendees have been placed, use the Save button to commit changes to the database
+
+Screenshot:
+![Example Screen 1](https://github.com/bbeanz/FontSeatPlannerPOC/blob/master/Screenshot%202021-06-25%20at%2016.37.33.png)
